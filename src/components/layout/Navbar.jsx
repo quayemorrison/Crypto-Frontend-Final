@@ -285,6 +285,7 @@ function Navbar() {
     const [showLanguageMenu, setShowLanguageMenu] = useState(false);
     const [languageSearchQuery, setLanguageSearchQuery] = useState("");
     const [selectedLanguage, setSelectedLanguage] = useState("English-Global");
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
@@ -315,10 +316,32 @@ function Navbar() {
         };
 
         window.addEventListener("scroll", handleScroll);
+        
+        // Close mobile menu on resize if screen becomes large
+        const handleResize = () => {
+            if (window.innerWidth >= 1024) { // lg breakpoint
+                setIsMobileMenuOpen(false);
+            }
+        };
+        window.addEventListener("resize", handleResize);
+
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
+
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isMobileMenuOpen]);
 
     return (
         <nav 
@@ -339,11 +362,11 @@ function Navbar() {
                     </Link>
 
                     {/* Navigation Links */}
-                    <div className="hidden lg:flex items-center gap-1 text-[15px] font-bold text-gray-800 transition-opacity duration-300">
+                    <div className="hidden xl:flex items-center gap-1 text-[15px] font-bold text-gray-800 transition-opacity duration-300">
 
                         <Link 
                             to="/explore" 
-                            className="px-4 py-2 rounded-full hover:bg-gray-50 transition-colors"
+                            className="px-2 xl:px-4 py-2 rounded-full hover:bg-gray-50 transition-colors"
                             onMouseEnter={() => setActiveMenu(null)}
                         >
                             Cryptocurrencies
@@ -353,7 +376,7 @@ function Navbar() {
                             <Link 
                                 key={key}
                                 to="#" 
-                                className={`px-4 py-2 rounded-full transition-colors ${
+                                className={`px-2 xl:px-4 py-2 rounded-full transition-colors ${
                                     activeMenu === key ? "bg-gray-100 text-black" : "hover:bg-gray-50"
                                 }`}
                                 onMouseEnter={() => setActiveMenu(key)}
@@ -771,7 +794,7 @@ function Navbar() {
                             setShowLanguageMenu(!showLanguageMenu);
                             if (activeMenu) setActiveMenu(null);
                         }}
-                        className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200"
+                        className="hidden xl:flex w-11 h-11 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200"
                     >
                         <Globe size={20} />
                     </button>
@@ -790,7 +813,7 @@ function Navbar() {
                             {/* Sign in */}
                             <Link
                                 to="/signin"
-                                className="whitespace-nowrap px-5 py-2.5 rounded-full bg-gray-100 text-base font-bold hover:bg-gray-200"
+                                className="hidden xl:block whitespace-nowrap px-5 py-2.5 rounded-full bg-gray-100 text-base font-bold hover:bg-gray-200"
                             >
                                 Sign in
                             </Link>
@@ -798,7 +821,7 @@ function Navbar() {
                             {/* Sign up */}
                             <Link
                                 to="/signup"
-                                className="whitespace-nowrap px-6 py-2.5 rounded-full bg-blue-600 text-white text-base font-bold hover:bg-blue-700 transition-all active:scale-95"
+                                className="hidden xl:block whitespace-nowrap px-6 py-2.5 rounded-full bg-blue-600 text-white text-base font-bold hover:bg-blue-700 transition-all active:scale-95"
                             >
                                 Sign up
                             </Link>
@@ -808,30 +831,17 @@ function Navbar() {
                     {/* Hamburger Menu (Mobile/Tablet) */}
                     <button 
                         onClick={() => {
+                            setIsMobileMenuOpen(!isMobileMenuOpen);
                             if (showLanguageMenu) setShowLanguageMenu(false);
+                            if (activeMenu) setActiveMenu(null);
                         }}
-                        className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 lg:hidden"
+                        className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 xl:hidden transition-colors"
+                        aria-label="Toggle menu"
                     >
-                        {showLanguageMenu ? (
-                            <X size={20} />
+                        {isMobileMenuOpen ? (
+                            <X size={24} />
                         ) : (
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="3" y1="12" x2="21" y2="12"></line>
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <line x1="3" y1="18" x2="21" y2="18"></line>
-                            </svg>
-                        )}
-                    </button>
-                    <button 
-                        onClick={() => {
-                            if (showLanguageMenu) setShowLanguageMenu(false);
-                        }}
-                        className="hidden lg:flex w-11 h-11 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200"
-                    >
-                        {showLanguageMenu ? (
-                            <X size={20} />
-                        ) : (
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="3" y1="12" x2="21" y2="12"></line>
                                 <line x1="3" y1="6" x2="21" y2="6"></line>
                                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -843,6 +853,90 @@ function Navbar() {
             </div>
 
             {activeMenu && !showLanguageMenu && <MegaMenu menu={menuData[activeMenu]} />}
+
+            {/* Mobile Menu Overlay */}
+            {isMobileMenuOpen && (
+                <div className="fixed inset-0 top-[64px] z-[55] bg-white animate-in fade-in slide-in-from-right-4 duration-300 xl:hidden overflow-y-auto">
+                    {/* Header line for mobile menu to show we are in the menu */}
+                    <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
+                        <span className="text-sm font-bold text-gray-500 uppercase tracking-widest">Menu</span>
+                        <button 
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-gray-900 p-2 -mr-2"
+                        >
+                            <X size={24} />
+                        </button>
+                    </div>
+                    
+                    <div className="flex flex-col p-6 gap-2">
+                        <Link 
+                            to="/explore" 
+                            className="text-[20px] font-bold text-gray-900 py-4 border-b border-gray-100 flex items-center justify-between"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            Cryptocurrencies
+                            <ChevronRight size={20} className="text-gray-400" />
+                        </Link>
+
+                        {Object.keys(menuData).map((key) => (
+                            <Link 
+                                key={key}
+                                to="#" 
+                                className="text-[20px] font-bold text-gray-900 py-4 border-b border-gray-100 flex items-center justify-between"
+                                onClick={() => {
+                                    // In a real app, this might open a sub-menu
+                                    // For now, we'll just keep it simple
+                                    setIsMobileMenuOpen(false);
+                                }}
+                            >
+                                {key.charAt(0).toUpperCase() + key.slice(1)}
+                                <ChevronRight size={20} className="text-gray-400" />
+                            </Link>
+                        ))}
+
+                        <div className="mt-8 flex flex-col gap-4">
+                            {isAuthenticated ? (
+                                <Link
+                                    to="/dashboard"
+                                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-blue-600 text-white text-lg font-bold hover:bg-blue-700 transition-all"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    <LayoutGrid size={24} />
+                                    Dashboard
+                                </Link>
+                            ) : (
+                                <>
+                                    <Link
+                                        to="/signup"
+                                        className="w-full py-4 rounded-xl bg-blue-600 text-white text-lg font-bold text-center hover:bg-blue-700 transition-all"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        Get started
+                                    </Link>
+                                    <Link
+                                        to="/signin"
+                                        className="w-full py-4 rounded-xl bg-gray-100 text-gray-900 text-lg font-bold text-center hover:bg-gray-200 transition-all"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        Sign in
+                                    </Link>
+                                </>
+                            )}
+                        </div>
+
+                        <button 
+                            onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setShowLanguageMenu(true);
+                            }}
+                            className="mt-6 flex items-center gap-3 text-gray-600 font-medium py-2"
+                        >
+                            <Globe size={20} />
+                            <span>{selectedLanguage.split('-')[0]}</span>
+                        </button>
+                    </div>
+                </div>
+            )}
 
             {/* Language Mega Menu Overlay */}
             {showLanguageMenu && (
@@ -902,7 +996,6 @@ function Navbar() {
                     </div>
                 </div>
             )}
-
         </nav>
     );
 }

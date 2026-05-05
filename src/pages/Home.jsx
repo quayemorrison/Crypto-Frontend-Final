@@ -20,7 +20,7 @@ function Home() {
     }, [navigate]);
 
     return (
-        <div className="bg-white">
+        <div className="bg-white w-full">
             <HeroSection />
             <ExploreSection />
             <TradingToolsSection />

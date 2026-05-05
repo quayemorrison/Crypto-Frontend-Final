@@ -110,9 +110,9 @@ function MarketCard() {
   const coins = getCoins();
 
   return (
-    <div className="w-full max-w-[680px] rounded-[40px] bg-black px-10 py-9 text-white">
+    <div className="w-full lg:max-w-[680px] rounded-[24px] lg:rounded-[40px] bg-black px-3 sm:px-4 lg:px-10 py-6 lg:py-9 text-white">
       {/* Tabs */}
-      <div className="flex items-center gap-4 text-[18px] font-medium">
+      <div className="flex items-center gap-2 lg:gap-4 text-[14px] lg:text-[18px] font-medium overflow-x-auto custom-scrollbar-hidden pb-2 lg:pb-0">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
 
@@ -121,8 +121,8 @@ function MarketCard() {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`rounded-full px-6 py-3 transition ${
-                isActive ? "bg-[#23262d] text-white" : "text-white hover:bg-[#181b20]"
+              className={`rounded-full px-3 lg:px-6 py-1.5 lg:py-3 transition whitespace-nowrap ${
+                isActive ? "bg-[#23262d] text-white" : "text-gray-400 hover:bg-[#181b20] hover:text-white"
               }`}
             >
               {tab.label}
@@ -132,7 +132,7 @@ function MarketCard() {
       </div>
 
       {/* Coin list */}
-      <div className="mt-10 space-y-7">
+      <div className="mt-6 lg:mt-10 space-y-5 lg:space-y-7">
         {loading ? (
           <div className="text-center text-gray-400 py-10">Loading market data...</div>
         ) : coins.length === 0 ? (
@@ -144,25 +144,25 @@ function MarketCard() {
 
             return (
               <div key={coin.name} className="flex items-center justify-between">
-                <div className="flex items-center gap-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
+                <div className="flex items-center gap-2 lg:gap-5 min-w-0">
+                  <div className="flex h-7 w-7 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-white shrink-0 overflow-hidden">
                     <img
                       src={coin.logo}
                       alt={coin.name}
-                      className="h-7 w-7 object-contain"
+                      className="h-4 w-4 lg:h-7 lg:w-7 object-contain"
                     />
                   </div>
 
-                  <span className="text-[30px] font-normal tracking-[-0.04em]">
+                  <span className="text-[16px] lg:text-[30px] font-normal tracking-[-0.04em] truncate">
                     {coin.name}
                   </span>
                 </div>
 
-                <div className="text-right">
-                  <p className="text-[22px] font-normal">{coin.price}</p>
+                <div className="text-right shrink-0">
+                  <p className="text-[15px] lg:text-[22px] font-normal">{coin.price}</p>
 
                   <p
-                    className={`text-[17px] transition-all duration-500 mt-1 ${
+                    className={`text-[13px] lg:text-[17px] transition-all duration-500 mt-0.5 lg:mt-1 ${
                       coin.flash === 'up'
                         ? "text-[#16c784]"
                         : coin.flash === 'down'
