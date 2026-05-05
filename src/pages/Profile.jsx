@@ -576,8 +576,8 @@ function Profile() {
             </div>
           </div>
 
-          {/* Right Sidebar - Sticky */}
-          <div className="w-[460px] border-l border-gray-200 p-8 shrink-0 hidden lg:block bg-white sticky top-0 self-start max-h-screen">
+          {/* Right Sidebar */}
+          <div className="w-[460px] border-l border-gray-200 p-8 shrink-0 hidden lg:block bg-white">
             
             {/* Buy/Sell/Convert Tabs */}
             <div className="flex bg-[#F3F5F7] p-1 rounded-full mb-8">
