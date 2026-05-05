@@ -686,8 +686,6 @@ function Profile() {
                 </div>
                 <span className="text-[16px] font-bold text-[#0A0B0D]">Receive crypto</span>
               </button>
-              
-              <div className="border-t border-gray-200 -mx-8 mt-12 mb-8" />
             </div>
 
           </div>
