@@ -291,11 +291,11 @@ function Profile() {
           </div>
         </header>
 
-        {/* Content Body */}
-        <div className="flex flex-1 overflow-hidden">
+        {/* Content Body - Unified scroll area */}
+        <div className="flex flex-1 overflow-y-auto">
           
           {/* Center Column */}
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1">
             <div className="w-full px-8 lg:px-12 py-10">
               
               {/* Balance */}
@@ -577,7 +577,7 @@ function Profile() {
           </div>
 
           {/* Right Sidebar */}
-          <div className="w-[460px] h-full border-l border-gray-200 p-8 shrink-0 hidden lg:block bg-white overflow-y-auto custom-scrollbar">
+          <div className="w-[460px] border-l border-gray-200 p-8 shrink-0 hidden lg:block bg-white">
             
             {/* Buy/Sell/Convert Tabs */}
             <div className="flex bg-[#F3F5F7] p-1 rounded-full mb-8">
