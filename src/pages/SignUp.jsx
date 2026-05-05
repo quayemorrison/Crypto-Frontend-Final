@@ -11,12 +11,13 @@ function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState(location.state?.prefilledEmail || "");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     try {
       const response = await axios.post("/api/auth/register", {
@@ -24,17 +25,19 @@ function SignUp() {
         email,
         password,
       }, {
-        withCredentials: true // Important for cookies
+        withCredentials: true 
       });
 
       if (response.status === 201) {
         if (response.data.token) {
           sessionStorage.setItem('token', response.data.token);
         }
-        navigate("/");
+        navigate("/dashboard", { replace: true });
       }
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred during registration");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -75,8 +78,14 @@ function SignUp() {
           required
         />
 
-        <Button type="submit" variant="primary" size="auth" className="mt-7 bg-[#86a7eb]">
-          Create Account
+        <Button 
+          type="submit" 
+          variant="primary" 
+          size="auth" 
+          className="mt-7 bg-[#86a7eb]"
+          disabled={loading}
+        >
+          {loading ? "Creating Account..." : "Create Account"}
         </Button>
       </form>
 
