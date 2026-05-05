@@ -577,7 +577,7 @@ function Profile() {
           </div>
 
           {/* Right Sidebar */}
-          <div className="w-[460px] h-full border-l border-gray-200 p-8 shrink-0 hidden xl:block bg-white overflow-y-auto custom-scrollbar">
+          <div className="w-[460px] h-full border-l border-gray-200 p-8 shrink-0 hidden lg:block bg-white overflow-y-auto custom-scrollbar">
             
             {/* Buy/Sell/Convert Tabs */}
             <div className="flex bg-[#F3F5F7] p-1 rounded-full mb-8">
