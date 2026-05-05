@@ -11,7 +11,8 @@ function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState(location.state?.prefilledEmail || "");
   const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
