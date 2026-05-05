@@ -4,10 +4,8 @@ import axios from 'axios';
 import './index.css';
 import App from './App.jsx';
 
-// In production, use the deployed backend URL
-axios.defaults.baseURL = import.meta.env.PROD
-  ? 'https://crypto-app-backend-u3zc.onrender.com'
-  : '';
+// In production, Netlify redirects handle the /api prefix
+axios.defaults.baseURL = '';
 axios.defaults.withCredentials = true;
 
 createRoot(document.getElementById('root')).render(
