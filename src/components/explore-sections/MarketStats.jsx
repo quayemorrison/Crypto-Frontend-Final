@@ -3,25 +3,25 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const MarketStats = ({ statsCards }) => {
   return (
-    <div className="px-9 py-12">
+    <div className="px-4 md:px-9 py-8 md:py-12">
       <div className="flex items-start justify-between gap-6">
         <div className="max-w-[900px]">
-          <h2 className="text-[31px] font-semibold tracking-[-0.02em] text-black">
+          <h2 className="text-[26px] md:text-[31px] font-semibold tracking-[-0.02em] text-black">
             Market stats
           </h2>
 
-          <p className="mt-7 text-[15px] leading-[1.45] text-[#5b616e]">
+          <p className="mt-4 md:mt-7 text-[14px] md:text-[15px] leading-[1.45] text-[#5b616e]">
             The overall crypto market is growing this week. As of today,
             the total crypto market capitalization is 23.97 trillion,
             representing a 0.55% increase from last week.
           </p>
 
-          <button className="mt-5 text-[13px] font-medium text-[#1652f0] hover:underline">
+          <button className="mt-4 md:mt-5 text-[13px] font-medium text-[#1652f0] hover:underline">
             Read more
           </button>
         </div>
 
-        <div className="flex items-center gap-8 pt-2 text-black">
+        <div className="hidden md:flex items-center gap-8 pt-2 text-black">
           <button type="button">
             <ArrowLeft size={28} />
           </button>
@@ -31,24 +31,24 @@ const MarketStats = ({ statsCards }) => {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-4 gap-4">
+      <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         {statsCards.map((card) => (
           <div
             key={card.title}
-            className="rounded-[24px] bg-[#f1f3f5] px-5 py-4"
+            className="rounded-[16px] md:rounded-[24px] bg-[#f1f3f5] px-4 md:px-5 py-3 md:py-4"
           >
-            <p className="text-[13px] text-[#5b616e]">{card.title}</p>
+            <p className="text-[12px] md:text-[13px] text-[#5b616e]">{card.title}</p>
 
-            <div className="mt-2 flex items-center gap-2 text-[13px] font-semibold text-black">
+            <div className="mt-2 flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 text-[12px] md:text-[13px] font-semibold text-black">
               <span>{card.value}</span>
               <span className={card.changeColor}>{card.change}</span>
             </div>
 
-            <div className="mt-5">
+            <div className="mt-4 md:mt-5">
               <img
                 src={card.chart}
                 alt={card.title}
-                className="h-[80px] w-full object-contain"
+                className="h-[60px] md:h-[80px] w-full object-contain"
               />
             </div>
           </div>

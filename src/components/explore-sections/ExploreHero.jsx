@@ -3,13 +3,13 @@ import { Search, Info } from "lucide-react";
 
 const ExploreHero = () => {
   return (
-    <div className="grid grid-cols-1 items-start gap-10 px-9 py-10 lg:grid-cols-[1fr_560px]">
+    <div className="grid grid-cols-1 items-start gap-6 md:gap-10 px-4 md:px-9 py-6 md:py-10 lg:grid-cols-[1fr_560px]">
       <div>
-        <h1 className="text-[42px] font-normal leading-none tracking-[-0.04em] text-black">
+        <h1 className="text-[32px] md:text-[42px] font-normal leading-none tracking-[-0.04em] text-black">
           Explore crypto
         </h1>
 
-        <div className="mt-2 flex items-center gap-2 text-[17px] text-black">
+        <div className="mt-2 flex flex-wrap items-center gap-2 text-[15px] md:text-[17px] text-black">
           <span>Coinbase 50 Index is down</span>
           <span className="text-[#ea3943]">↘ 1.64%</span>
           <span>(24hrs)</span>
@@ -18,12 +18,12 @@ const ExploreHero = () => {
       </div>
 
       <div className="flex justify-start lg:justify-end">
-        <div className="flex h-[60px] w-full max-w-[440px] items-center rounded-full bg-[#f1f3f5] px-7">
-          <Search size={24} className="text-black" />
+        <div className="flex h-[52px] md:h-[60px] w-full max-w-[440px] items-center rounded-full bg-[#f1f3f5] px-5 md:px-7">
+          <Search size={20} className="text-black" />
           <input
             type="text"
             placeholder="Search for an asset"
-            className="ml-4 w-full bg-transparent text-[15px] text-[#5b616e] outline-none placeholder:text-[#5b616e]"
+            className="ml-4 w-full bg-transparent text-[14px] md:text-[15px] text-[#5b616e] outline-none placeholder:text-[#5b616e]"
           />
         </div>
       </div>

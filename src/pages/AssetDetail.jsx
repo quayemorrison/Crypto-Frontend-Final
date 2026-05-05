@@ -135,7 +135,7 @@ function AssetDetail() {
             <div className="mb-2">
               <h2 className="text-[14px] text-gray-500 font-medium mb-1">{coin.name} price</h2>
               <div className="flex items-baseline gap-4">
-                <span className="text-[48px] font-bold tracking-tight leading-none">
+                <span className="text-[36px] md:text-[48px] font-bold tracking-tight leading-none">
                   ${coin.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
               </div>

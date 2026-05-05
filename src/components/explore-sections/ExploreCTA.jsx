@@ -4,7 +4,7 @@ const blueBottomImage = new URL("../../assets/images/blue-bottom image.png", imp
 
 const ExploreCTA = () => {
   return (
-    <section className="mt-auto w-full bg-[#0052ff] px-10 pt-16 pb-12">
+    <section className="mt-auto w-full bg-[#0052ff] px-4 md:px-10 pt-16 pb-12">
       <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
         {/* LEFT TEXT */}
         <div className="max-w-[720px]">

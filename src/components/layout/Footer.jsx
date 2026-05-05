@@ -38,18 +38,18 @@ function Footer() {
 
     return (
         <footer className="mt-0 border-t border-gray-200 bg-white">
-            <div className={`mx-auto w-full max-w-7xl px-14 pt-20 ${isLearnPage ? "pb-0" : "pb-20"}`}>
+            <div className={`mx-auto w-full max-w-7xl px-6 md:px-14 pt-12 md:pt-20 ${isLearnPage ? "pb-0" : "pb-12 md:pb-20"}`}>
 
                 {/* Main Footer */}
-                <div className="grid grid-cols-1 lg:grid-cols-[160px_1fr] gap-14">
+                <div className="grid grid-cols-1 lg:grid-cols-[160px_1fr] gap-10 md:gap-14">
 
                     {/* Logo */}
                     <div className="pt-1">
-                        <img src={logo} alt="Coinbase" className="h-14 w-auto" />
+                        <img src={logo} alt="Coinbase" className="h-10 md:h-14 w-auto" />
                     </div>
 
                     {/* Footer Columns */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 max-w-6xl">
+                    <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-10 max-w-6xl">
 
                         {footerColumns.map((column, index) => (
                             <div key={index}>
@@ -68,7 +68,7 @@ function Footer() {
                 </div>
 
                 {/* Social Icons */}
-                <div className="mt-8 mb-6 flex items-center gap-8">
+                <div className="mt-8 mb-6 flex items-center gap-6 md:gap-8">
                     <a href="#" className="opacity-70 hover:opacity-100 transition-opacity">
                         <img src={xLight} alt="X" className="h-[14px] w-auto" />
                     </a>
@@ -84,17 +84,17 @@ function Footer() {
                 </div>
 
                 {/* Bottom Bar: Copyright & Language */}
-                <div className="border-t border-gray-200 pt-8 flex flex-col gap-4">
+                <div className="border-t border-gray-200 pt-8 flex flex-col gap-6">
 
                     {/* Demo Disclaimer */}
-                    <div className="text-[12px] text-gray-400 bg-gray-50 rounded-lg px-4 py-3 text-center">
+                    <div className="text-[12px] text-gray-400 bg-gray-50 rounded-lg px-4 py-3 text-center leading-relaxed">
                         ⚠️ This is a student portfolio project built for educational purposes only. It is not affiliated with, endorsed by, or connected to Coinbase, Inc. Do not enter real personal information or passwords.
                     </div>
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
 
                     {/* Copyright */}
-                    <div className="text-sm text-gray-600">
+                    <div className="text-[13px] md:text-sm text-gray-600">
                         © 2026 Crypto App — Student Project
                         <span className="mx-2">•</span>
                         <a href="#" className="hover:text-black">Privacy</a>
@@ -103,7 +103,7 @@ function Footer() {
                     </div>
 
                     {/* Language */}
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-[13px] md:text-sm text-gray-600">
                         <Globe size={16} />
                         <span>Global</span>
                         <span>•</span>
