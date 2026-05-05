@@ -717,14 +717,6 @@ function Profile() {
                   <div className="w-[20px] h-[20px] bg-white rounded-full absolute left-[2px] top-[2px] shadow-sm" />
                 </div>
               </div>
-
-              <button 
-                onClick={handleLogout}
-                className="flex items-center gap-4 w-full px-4 py-3 text-red-500 hover:bg-red-50 rounded-xl font-bold transition-colors"
-              >
-                <LogOut size={22} />
-                <span>Sign out</span>
-              </button>
             </div>
           </div>
         </>
