@@ -561,16 +561,16 @@ function Profile() {
               </div>
               
               {/* Footer Links */}
-              <div className="pt-8 pb-12 flex flex-col items-start gap-4">
-                <div className="flex items-center gap-6 text-[15px] text-[#5B616E]">
+              <div className="pt-4 pb-6 flex flex-col items-start gap-3">
+                <div className="flex items-center gap-3 text-[12px] text-[#5B616E]">
                   <a href="#" className="hover:text-black underline transition-all">Careers</a>
                   <a href="#" className="hover:text-black underline transition-all">Legal & Privacy</a>
                   <a href="#" className="hover:text-black underline transition-all">Accessibility Statement</a>
                   <span>© 2026 Coinbase</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-[#F3F5F7] rounded-full text-[16px] font-bold text-[#0A0B0D] cursor-pointer hover:bg-[#E2E8F0] transition-all">
+                <div className="flex items-center gap-1.5 px-3 py-1 bg-[#F3F5F7] rounded-full text-[13px] font-bold text-[#0A0B0D] cursor-pointer hover:bg-[#E2E8F0] transition-all">
                   <span>English</span>
-                  <ChevronDown size={18} strokeWidth={2.5} />
+                  <ChevronDown size={14} strokeWidth={2.5} />
                 </div>
               </div>
             </div>
