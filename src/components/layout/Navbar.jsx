@@ -328,18 +328,18 @@ function Navbar() {
             onMouseLeave={() => setActiveMenu(null)}
         >
 
-            <div className="w-full px-10 h-full flex items-center justify-between">
+            <div className="w-full px-6 h-full flex items-center justify-between">
 
                 {/* LEFT SIDE */}
-                <div className="flex items-center gap-12">
+                <div className="flex items-center gap-6">
 
                     {/* Logo */}
-                    <Link to="/">
-                        <img src={logo} alt="Coinbase" className="h-10" />
+                    <Link to="/" className="shrink-0">
+                        <img src={logo} alt="Coinbase" className="h-10 w-auto" />
                     </Link>
 
                     {/* Navigation Links */}
-                    <div className="hidden lg:flex items-center gap-4 text-base font-bold text-gray-800 transition-opacity duration-300">
+                    <div className="hidden lg:flex items-center gap-1 text-[15px] font-bold text-gray-800 transition-opacity duration-300">
 
                         <Link 
                             to="/explore" 
